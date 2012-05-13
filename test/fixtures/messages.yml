@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyText
+  message_type: 1
+  send_time: 2012-05-12 15:53:58
+  send_id: 1
+  from_id: 1
+
+two:
+  content: MyText
+  message_type: 1
+  send_time: 2012-05-12 15:53:58
+  send_id: 1
+  from_id: 1

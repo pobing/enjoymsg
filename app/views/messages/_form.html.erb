@@ -1,0 +1,39 @@
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+  	<%= radio_button("message","message_type","0") %>
+    <%= label_tag(:message_type, "短信") %>
+  	<%= radio_button("message","message_type","1") %>
+    <%= label_tag(:message_type, "彩信") %>
+  </div>
+  <div class="field">
+    <%= f.label :send_time %><br />
+    <%= f.datetime_select :send_time,:start_year => 2011 %>
+  </div>
+  <div class="field">
+    <%= f.label :send_id %><br />
+    <%= f.number_field :send_id %>
+  </div>
+  <div class="field">
+    <%= f.label :from_id %><br />
+    <%= f.number_field :from_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
