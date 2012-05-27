@@ -1,0 +1,16 @@
+<div id="login">
+  <fieldset>
+<legend>Enter User Details</legend>
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+	<%= form_tag("/auth", :method => "post") do %>
+	<%= label_tag(:phone_id, "phone_num:") %>
+	<%= text_field_tag(:phone) %> </br>
+	<%= label_tag(:passwd, "password:") %>
+	<%= password_field_tag(:password) %>
+	</br>
+	<%= submit_tag("login") %>
+	<% end %>
+</fieldset>
+</div>

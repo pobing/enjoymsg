@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120512090402) do
+ActiveRecord::Schema.define(:version => 20120527092744) do
 
   create_table "contacts", :force => true do |t|
     t.string   "mobile_phone"
@@ -47,8 +47,10 @@ ActiveRecord::Schema.define(:version => 20120512090402) do
     t.string   "email"
     t.string   "company"
     t.string   "job_title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "hashed_password"
+    t.string   "salt"
   end
 
 end
