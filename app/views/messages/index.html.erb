@@ -1,31 +1,23 @@
-<h1>Listing messages</h1>
-
-<table>
-  <tr>
-    <th>Content</th>
-    <th>Message type</th>
-    <th>Send time</th>
-    <th>Send</th>
-    <th>From</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<h1>search </h1>
+<%= link_to '添加新消息/導入', new_message_path %>
 <% @messages.each do |message| %>
-  <tr>
-    <td><%= message.content %></td>
-    <td><%= message.msg_type %></td>
-    <td><%= message.send_time_formats %></td>
-    <td><%= message.send_id %></td>
-    <td><%= message.from_id %></td>
-    <td><%= link_to 'Show', message %></td>
-    <td><%= link_to 'Edit', edit_message_path(message) %></td>
-    <td><%= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+<dl>
+	<dt class="face">
+		<a title="李开复" href="/kaifulee"><img width="50" height="50" src="#" alt="" title="李开复" usercard="id=1197161814"></a>
+	</dt>
+	<dd class="content">
+	   <%= link_to message.sender , '/users/2' %>
+       ：<em><%=message.content%></em></p>
+				<a><%=message.send_time_formats%></a>
+		<span>
+		<%= link_to '详细', message %>|
+		<%= link_to '删除', message, confirm: 'Are you sure?', method: :delete %></a>
+		</span>
+		 类型：<%=message.msg_type%>
+	</dd>
+	</dl>
 
+<% end %>
 <br />
 
-<%= link_to 'New Message', new_message_path %>
+

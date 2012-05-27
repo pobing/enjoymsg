@@ -1,14 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Enjoymsg</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>Enjoymsg</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<%= render "layouts/header"%>
+		<%= render "layouts/nav"%>
+		<section>
+			<!-- Main content area -->
+			<%= yield %>
+		</section>
 
-<%= yield %>
-
-</body>
+		<%= render "layouts/aside"%>
+		<%= render "layouts/footer"%>
+	</body>
 </html>

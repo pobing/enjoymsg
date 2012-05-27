@@ -26,4 +26,11 @@ class Message < ActiveRecord::Base
     self.send_time.to_formatted_s(:db) 
   end
   
+  def little_content
+  end
+  
+  def sender
+  self.from_id.nil? ? "未知" : "jdd"
+  end
+  
 end
