@@ -2,16 +2,20 @@
 class SessionsController < ApplicationController
   layout 'login'
   def auth
-    user=User.where(:name=>params[:phone],:phone=>params[:password]).first
+
+  end
+
+  def create
+     Rails.logger.debug "debug sssssssssssssss #{params}"
+    user=User.authenticate(params[:phone], params[:password])
+   
     if !user.nil?
-      session[:current_user]=user
-      @user=session[:current_user]
+        session[:user_id] = user.id
+      # redirect_to admin_url
       redirect_to :action=>"index",:controller=>"messages"
     else
-      session[:current_user]=nil
-      flash[:notice]="phone or password is error"
+     redirect_to login_url, :alert => "Invalid user/password"
     end
-
   end
 
   def register
@@ -19,7 +23,7 @@ class SessionsController < ApplicationController
     if @user.save
       flash[:notice]="User #{@user.phone} was successfully created."
     else
-      # redirect_to :action=>"register",:controller=>"sessions"
+    # redirect_to :action=>"register",:controller=>"sessions"
     end
 
   end

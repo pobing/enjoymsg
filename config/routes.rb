@@ -6,9 +6,21 @@ Enjoymsg::Application.routes.draw do
   resources :groups
 
   resources :users
+  
 
   match 'auth' => 'sessions#auth', :as => :login
+  match 'sessions/create' => 'sessions#create'
   match 'register' => 'sessions#register', :as => :register
+  # resources :sessions do
+        # member do
+        # get 'short'
+        # post 'toggle'
+      # end
+#   
+      # collection do
+        # get 'sold'
+      # end
+  # end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
