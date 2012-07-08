@@ -1,5 +1,11 @@
 <header>
 	<h1>Enjoymsg</h1>
 
+	<%if session[:user_id]%> 
+	 <%=link_to current_user.name,current_user %>,<%=link_to 'logout',logout_path,:method=>:delete %>
+	<%else %>
 	<a href ="/auth">login</a> | <a href ="/register">register</a>
+	<%
+      end
+	%>
 </header>

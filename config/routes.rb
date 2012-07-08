@@ -7,10 +7,14 @@ Enjoymsg::Application.routes.draw do
 
   resources :users
   
+  controller :sessions do
+    delete 'logout'=>:destroy
+  end
 
   match 'auth' => 'sessions#auth', :as => :login
   match 'sessions/create' => 'sessions#create'
   match 'register' => 'sessions#register', :as => :register
+  
   # resources :sessions do
         # member do
         # get 'short'
