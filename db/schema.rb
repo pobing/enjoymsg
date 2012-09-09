@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527092744) do
+ActiveRecord::Schema.define(:version => 20120909062043) do
+
+  create_table "comments", :force => true do |t|
+    t.string   "commenter"
+    t.text     "body"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["post_id"], :name => "index_comments_on_post_id"
 
   create_table "contacts", :force => true do |t|
     t.string   "mobile_phone"
@@ -30,6 +40,15 @@ ActiveRecord::Schema.define(:version => 20120527092744) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "kindeditor_assets", :force => true do |t|
+    t.string   "asset"
+    t.string   "file_name"
+    t.integer  "file_size"
+    t.string   "file_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "messages", :force => true do |t|
     t.text     "content"
     t.integer  "message_type"
@@ -40,6 +59,23 @@ ActiveRecord::Schema.define(:version => 20120527092744) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "posts", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "tags", ["post_id"], :name => "index_tags_on_post_id"
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "phone"
@@ -47,10 +83,14 @@ ActiveRecord::Schema.define(:version => 20120527092744) do
     t.string   "email"
     t.string   "company"
     t.string   "job_title"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "hashed_password"
     t.string   "salt"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end

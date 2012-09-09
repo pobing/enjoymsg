@@ -1,4 +1,14 @@
 Enjoymsg::Application.routes.draw do
+
+  resources :posts do
+    resources :comments
+  end
+
+  get "welcome/index"
+
+  match 'auth' => 'sessions#auth', :as => :login
+  match 'sessions/create' => 'sessions#create'
+  match 'register' => 'sessions#register', :as => :register
   resources :contacts
 
   resources :messages
@@ -6,24 +16,20 @@ Enjoymsg::Application.routes.draw do
   resources :groups
 
   resources :users
-  
+
   controller :sessions do
     delete 'logout'=>:destroy
   end
 
-  match 'auth' => 'sessions#auth', :as => :login
-  match 'sessions/create' => 'sessions#create'
-  match 'register' => 'sessions#register', :as => :register
-  
   # resources :sessions do
-        # member do
-        # get 'short'
-        # post 'toggle'
-      # end
-#   
-      # collection do
-        # get 'sold'
-      # end
+  # member do
+  # get 'short'
+  # post 'toggle'
+  # end
+  #
+  # collection do
+  # get 'sold'
+  # end
   # end
 
   # The priority is based upon order of creation:
@@ -76,7 +82,7 @@ Enjoymsg::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'messages#index'
+  root :to => 'welcome#index'
 
 # See how all your routes lay out with "rake routes"
 

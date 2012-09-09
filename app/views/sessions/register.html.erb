@@ -1,35 +1,7 @@
-<%= form_for @user do |f| %>
-<fieldset>
-	<legend>
-		Enter User Details
-	</legend>
-	<% if @user.errors.any? %>
-	<div id="error_explanation">
-		<h2><%= pluralize(@user.errors.count, "error") %> prohibited this contact from being saved:</h2>
-
-		<ul>
-			<% @user.errors.full_messages.each do |msg| %>
-			<li>
-				<%= msg %>
-			</li>
-			<% end %>
-		</ul>
-	</div>
-	<% end %>
-	<div>
-		<%= f.label :phone %>:<%= f.text_field :phone, :size => 40 %>
-	</div>
-	<div>
-		<%= f.label :password, 'Password' %>:
-		<%= f.password_field :password, :size => 40 %>
-	</div>
-	<div>
-		<%= f.label :password_confirmation, 'Confirm' %>:
-		<%= f.password_field :password_confirmation, :size => 40 %>
-	</div>
-	<div>
-		<%= f.submit %>
-	</div>
-</fieldset>
+<%= simple_form_for @user do |f| %>
+  <%= f.input :phone, :label_html => { :class => 'my_class' } %>
+  <%= f.input :password, :hint => false, :error_html => { :id => 'password_error'} %>
+  <%= f.input :password_confirmation, :label => false %>
+  <%= f.button :submit %>
 <% end %>
-</div>
+

@@ -3,3 +3,5 @@ require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
 Enjoymsg::Application.initialize!
+
+ :config.gem "calendar_date_select"

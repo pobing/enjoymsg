@@ -2,7 +2,6 @@
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -15,9 +14,21 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
+
   <div class="field">
     <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
+    <%= f.telephone_field :phone %>
   </div>
   <div class="field">
     <%= f.label :group_id %><br />
@@ -34,6 +45,11 @@
   <div class="field">
     <%= f.label :job_title %><br />
     <%= f.text_field :job_title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :avatar %><br />
+    <%= f.file_field :avatar %>
   </div>
   <div class="actions">
     <%= f.submit %>

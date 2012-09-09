@@ -23,6 +23,12 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'simple_form'
+gem 'country_select'
+gem 'rails_kindeditor', '0.3.6'
+gem 'kaminari'
+gem "paperclip", "~> 3.0"
+gem 'calendar_date_select', :git => 'http://github.com/paneq/calendar_date_select.git', :branch => 'rails3test'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -30,6 +30,10 @@
   <%= @user.job_title %>
 </p>
 
+    <%= image_tag @user.avatar.url %>  
+    <%= image_tag @user.avatar.url(:normal) %>  
+    <%= image_tag @user.avatar.url(:s32) %>  
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

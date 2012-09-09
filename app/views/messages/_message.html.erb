@@ -1,0 +1,9 @@
+<tr id="<%= dom_id message %>">
+ 
+  <td><%= message.content %></td>
+  <td><%= message.message_type %></td>
+  <td><%=  message.send_time %></td>
+  <td><%= link_to 'Show', message %></td>
+  <td><%= link_to 'Edit', edit_message_path(message), :remote => true %></td>
+  <td><%= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete, :remote => true %></td>
+</tr>

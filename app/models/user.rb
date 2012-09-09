@@ -8,6 +8,24 @@ class User < ActiveRecord::Base
   attr_accessor :password_confirmation
   attr_reader :password
   validate :password_must_be_present
+  attr_accessible :avatar
+  # has_attached_file :avatar,   
+  #                   :styles => { :medium => "300x300>",  
+  #                                :thumb => "100x100>" } 
+   has_attached_file :avatar,
+    :default_style => :s120,
+    :styles => {
+      :normal => "180x180#",
+      :s120 => "120x120#",
+      :s48 => "48x48#",
+      :s32 => "32x32#",
+      :s16 => "16x16#"
+      },
+    :url => "/uploads/:class/:attachment/:id/:basename/:style.:extension",
+    :path => ":rails_root/public/uploads/:class/:attachment/:id/:basename/:style.:extension"
+
+  # has_attached_file :scan, :styles => { :text => { :quality => :better } },
+  #                        :processors => [:rotator, :ocr]
   
   def User.authenticate(phone, password)
      if user = find_by_phone(phone)
@@ -30,6 +48,11 @@ class User < ActiveRecord::Base
     end
   end
 
+
+ def fullname
+    name.present? ? name : phone
+  end
+  
  private
 
   def password_must_be_present

@@ -1,0 +1,14 @@
+<h4>comments:</h4>
+
+<% @post.comments.each do |comment| %>
+
+ <%=comment.commenter %> </br>
+ <%= comment.body %>
+ 
+ <p>
+ 	<%= link_to 'Destroy Comment', [comment.post,comment],
+ 	             :confirm => 'Are you sure?',
+ 	             :method => :delete %>
+ </p>
+ 
+<% end %>

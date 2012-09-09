@@ -23,14 +23,14 @@ class Message < ActiveRecord::Base
   end
   
   def send_time_formats
-    self.send_time.to_formatted_s(:db) 
+    self.send_time #.to_formatted_s(:db) 
   end
   
   def little_content
   end
   
   def sender
-  self.from_id.nil? ? "未知" : "jdd"
+  self.from_id.nil? ? "未知" : self.from_id
   end
   
 end
